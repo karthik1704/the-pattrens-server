@@ -30,12 +30,12 @@ class User(AbstractBaseUser):
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
         # Simplest possible answer: Yes, always
-        return True
+        return self.is_superuser
 
     def has_module_perms(self, app_label):
         "Does the user have permissions to view the app `app_label`?"
         # Simplest possible answer: Yes, always
-        return True
+        return self.is_superuser
 
 
 
@@ -46,6 +46,6 @@ class User(AbstractBaseUser):
 class Profile(models.Model):
     user = OneToOneField(User,on_delete=models.CASCADE)
     avatar = ImageField(upload_to="avatar/", blank=True, null=True)
-    first_name = CharField(max_length=100)
-    last_name = CharField(max_length=100)
-    birth_date = DateField()
+    first_name = CharField(max_length=100,blank=True, null=True)
+    last_name = CharField(max_length=100,blank=True, null=True)
+    birth_date = DateField(blank=True, null=True)
