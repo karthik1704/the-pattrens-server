@@ -10,6 +10,7 @@ class Platform(models.Model):
     slug = SlugField(unique=True)
 
 
+
 class UiApps(models.Model):
     name = CharField(max_length=100)
     created_at = DateTimeField(auto_now_add=True)
@@ -24,8 +25,15 @@ class UiApps(models.Model):
     def __str__(self) -> str:
         return self.name
 
+
+class Category(models.Model):
+    name = CharField(max_length=50)
+    def __str__(self) -> str:
+        return self.name
+
 class UiImages(models.Model):
     uiapp = ForeignKey(UiApps, on_delete=models.CASCADE)
     platform = ForeignKey(Platform, on_delete=models.DO_NOTHING)
+    category = ForeignKey(Category, on_delete=models.DO_NOTHING)
     image = ImageField(upload_to='apps/')
 
