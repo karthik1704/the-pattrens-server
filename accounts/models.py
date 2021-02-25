@@ -1,6 +1,6 @@
 from django.db import models
 
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db.models.fields import BooleanField, CharField, DateField, DateTimeField, EmailField
 from django.db.models.fields.files import ImageField
 from django.db.models.fields.related import OneToOneField
@@ -8,7 +8,7 @@ from django.db.models.fields.related import OneToOneField
 from .manager import UserManager
 # Create your models here.
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     
     username = CharField(max_length=25, blank=True, null=True, unique=True, db_index=True)
     email = EmailField(unique=True, db_index=True)
