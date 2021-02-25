@@ -60,8 +60,8 @@ INSTALLED_APPS = [
 
     # APPS
     'accounts.apps.AccountsConfig',
-    'myboards.apps.MyboardsConfig',
     'ui_apps.apps.UiAppsConfig',
+    'myboards',
 
 ]
 
@@ -120,9 +120,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Auth Backends
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
     # allauth specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
+   
+    'django.contrib.auth.backends.ModelBackend',
 
 ]
 
@@ -137,19 +138,20 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'accounts.serializers.UserDetailSerializer',
 }
 
-# REST_AUTH_REGISTER_SERIALIZERS = {
-#     'REGISTER_SERIALIZER': 'accounts.serializers.RegisterSerializer',
-# }
+
 
 # REST Framework
 
 REST_FRAMEWORK = {
 
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
     ],
 }
 
