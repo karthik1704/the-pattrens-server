@@ -10,7 +10,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-INSTALLED_APPS += []
+INSTALLED_APPS += [
+    'check',
+]
 
 
 
