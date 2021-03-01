@@ -9,10 +9,14 @@ User = settings.AUTH_USER_MODEL
 class MyBoard(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    images = models.ForeignKey(UiImages, on_delete=models.DO_NOTHING, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True) 
 
     def __str__(self) -> str:
         return self.name
 
+
+class MyBoardItem(models.Model):
+    image = models.ForeignKey(UiImages, on_delete=models.DO_NOTHING, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True) 
