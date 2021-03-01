@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'ui_apps.apps.UiAppsConfig',
     'myboards',
+    'user_requests',
+
 
 ]
 

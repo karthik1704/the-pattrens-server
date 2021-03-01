@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/v1/', include('ui_apps.urls')),
     path('api/v1/', include('myboards.urls')),
     path('api/v1/', include('check.urls')),
+    path('api/v1/', include('user_requests.urls')),
     
     path('api/v1/auth/registration/', include('dj_rest_auth.registration.urls')),
     path('api/v1/auth/', include('dj_rest_auth.urls')),
