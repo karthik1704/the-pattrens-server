@@ -28,6 +28,10 @@ DATABASES = {
     }
 }
 
+# Cors Headers
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+]
 
 # Mail
 
