@@ -1,0 +1,85 @@
+{% extends 'base/index.html' %}
+{% block header %}
+    {% include 'base/header.html' %}
+{% endblock header %}
+{% load static %}
+{% block main %}
+<section class="bg-f4f9ff">
+  <div class="container-fluid p-0">
+    <div class="shadow-section">
+      <div class="row">
+        <div class="col-sm-6 p-100">
+          <div class="request-title">
+            <h3>Request an app on screenshot</h3>
+            <h5>Submit the following details</h5>
+          </div>
+          <img src="{% static 'base/img/rqst-img.png' %}" />
+        </div>
+        <div class="col-sm-6 bg-white p-100">
+          <div class="form-request">
+            <div class="form-group">
+              <label for="">1. App Name <span>*</span></label>
+              <input class="form-control" id="" type="text" />
+            </div>
+          </div>
+          <div class="form-request">
+            <div class="form-group">
+              <label for="">2. Platform <span>*</span></label>
+              <input class="form-control" id="" type="text" />
+            </div>
+          </div>
+          <div class="form-request">
+            <div class="form-group">
+              <label for="">3.App URL / Website URL <span>*</span></label>
+              <input class="form-control" id="" type="text" />
+            </div>
+          </div>
+          <div class="form-request">
+            <div class="form-group">
+              <label for="">4.Why do you love this app? </label>
+              <textarea class="form-control" rows="4"></textarea>
+            </div>
+          </div>
+          <div class="form-request">
+            <div class="form-group">
+              <label for="">5.Your Name </label>
+              <input class="form-control" id="" type="text" />
+            </div>
+          </div>
+          <div class="form-request">
+            <div class="form-group">
+              <label for="">6.Country </label>
+              <input class="form-control" id="" type="text" />
+            </div>
+          </div>
+          <div class="form-request">
+            <div class="form-group">
+              <label for=""> 7.Email <span>*</span> </label>
+              <input class="form-control" id="" type="email" />
+            </div>
+          </div>
+          <div class="form-group form-inline text-left">
+            <div class="form-check">
+              <label>
+                <input type="checkbox" /><span class="m-l-10"
+                  >Can we send out newsletter and promotion detail to this email
+                  id
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="my-3 login_or">
+            <a class="btn btn-block btn-primary auth-form-btn" href=""
+              >Submit
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main %}
+
+{% block footer %}
+    {% include 'base/footer.html' %}
+{% endblock footer %}

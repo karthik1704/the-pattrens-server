@@ -1,0 +1,136 @@
+{% extends 'base/index.html' %} 
+{% load static %} 
+{% block header %} 
+{% include 'base/header.html' %} 
+{% endblock header %} 
+{% block main %}
+{% include 'base/warpper.html' %} 
+{% include 'base/coffee.html' %}
+
+<section id="page-content" class="portfolio-design">
+  <div class="container-fluid">
+    <div class="portfolio_contents">
+      <nav class="grid-filter gf-outline" data-layout="#portfolio">
+        <ul>
+          <li class="active"><a href="#" data-category="*">All</a></li>
+          <li><a href="#" data-category=".ct-branding">Andriod</a></li>
+          <li><a href="#" data-category=".ct-photography">iOS</a></li>
+          <li><a href="#" data-category=".ct-marketing">Web Dashboard</a></li>
+          <li><a href="#" data-category=".ct-media">Google font website</a></li>
+          <li><a href="#" data-category=".ct-webdesign">Game Ui</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="grid-active-title1 filter-conditions">
+      <div class="filter-home">
+        <img src="{% static 'base/img/filter.png' %}" /><span>Filter</span>
+      </div>
+      <div id="mainMenu" class="tag-content">
+        <div class="container">
+          <nav>
+            <ul>
+              <li class="dropdown mega-menu-item tag-design">
+                <a href="#">Tags <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu tag-menu">
+                  <li class="mega-menu-content tag-magamenu">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <ul>
+                          <li><a href="">Advertising</a></li>
+                          <li><a href="">Agency</a></li>
+                          <li><a href="">Animals</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-4">
+                        <ul>
+                          <li><a href="">Advertising</a></li>
+                          <li><a href="">Agency</a></li>
+                          <li><a href="">Animals</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-lg-4">
+                        <ul>
+                          <li><a href="">Advertising</a></li>
+                          <li><a href="">Agency</a></li>
+                          <li><a href="">Animals</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <form
+        class="widget-subscribe-form"
+        novalidate=""
+        action=""
+        role="form"
+        method="post"
+      >
+        <div class="input-group">
+          <input
+            type="text"
+            required=""
+            name="widget-subscribe-form-email"
+            class="form-control required search"
+            placeholder="search"
+          />
+        </div>
+      </form>
+    </div>
+
+    <div
+      id="portfolio"
+      class="grid-layout portfolio-4-columns"
+      data-margin="20"
+    >
+    {% for i in '0123456789'|make_list %}
+      <div
+        class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media ct-webdesign"
+      >
+        <a href="project-detail1.php">
+          <div class="portfolio-item-wrap">
+            <div class="portfolio-image">
+              <img src="{% static 'base/img/product-logo.jpg'%}" alt="" />
+            </div>
+
+            <div class="portfolio-contents">
+              <div class="fst-content">
+                <h2>Website</h2>
+                <div class="portfolio-heart">
+                  <i class="fas fa-heart"></i>466
+                </div>
+              </div>
+
+              <div class="portfolio-detail sec-content">
+                <p>Travel and share the Best moments</p>
+                <div class="portfolio-clock">
+                  <i class="far fa-clock"></i>APR 26
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+      
+        
+    </div>
+    <div id="showMore">
+        <a href="#" class="btn btn-rounded btn-light">Load more</a>
+    </div>
+  </div>
+</section>
+{% include 'ui_apps/filter_slider.html' %}
+{% include 'base/coffee.html' %}
+{% endblock main %} 
+
+{% block footer %} 
+{% include 'base/footer.html' %} 
+{% endblock footer %}
+

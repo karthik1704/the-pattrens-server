@@ -34,3 +34,7 @@ CORS_ALLOWED_ORIGINS = [
 # E-mail Backend
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Static files (CSS, JavaScript, Images)
+
+STATICFILES_DIRS = (BASE_DIR / 'static',) 

@@ -1,0 +1,59 @@
+{% extends 'base/index.html' %} 
+
+{% block header %} 
+{% include 'base/header.html'%} 
+{% endblock header %} 
+
+{% block main %}
+<div class="setting-section bg-f5f6f8">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="setting-title title-display">
+          <h2>My board</h2>
+        </div>
+        <div class="add-board">
+          <h5>
+            <a href="" data-target="#modal" data-toggle="modal">+ New Board</a>
+          </h5>
+        </div>
+        <form
+          class="widget-subscribe-form search-board"
+          novalidate=""
+          action=""
+          role="form"
+          method="post"
+        >
+          <div class="input-group">
+            <input
+              type="text"
+              required=""
+              name="widget-subscribe-form-email"
+              class="form-control required search"
+              placeholder="search"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-f5f6f8 setting-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <a href="create-board.php">
+          <div class="board-list">
+            <h4>Default Board</h4>
+          </div></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}
+
+{% block footer %} 
+{% include 'base/footer.html' %} 
+{% endblock footer %} 

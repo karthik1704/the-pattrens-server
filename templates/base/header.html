@@ -1,8 +1,9 @@
+{% load static %}
 <header id="header">
   <div class="header-inner">
     <div class="container">
       <div id="logo">
-        <a href="index.php"
+        <a href="{% url 'home' %}"
           ><span class="logo-default">Screenshot Logo</span
           ><span class="logo-dark">Screenshot Logo</span></a
         >
@@ -11,7 +12,36 @@
       <div id="mainMenu-trigger">
         <a class="lines-button x"><span class="lines"></span></a>
       </div>
+      {% if not request.user.is_authenticated %}
 
+      <div id="mainMenu">
+        <div class="container">
+          <nav>
+            <ul>
+              <li>
+                <a
+                  type="button"
+                  class="btn btn-rounded register-now"
+                  href="{% url 'request' %}"
+                  >Request</a
+                >
+              </li>
+              <li>
+                <div class="p-dropdown m-l-15">
+                  <a href="#"><img src="{% static 'base/img/profile.png'%}" /></a>
+                  <ul class="p-dropdown-content profile-down">
+                    <li><a href="my-board.php">My Boards</a></li>
+                    <li><a href="{% url 'settings' %}">Settings</a></li>
+                    <li><a href="#" class="logout-design">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      {% else %}
       <div id="mainMenu">
         <div class="container">
           <nav>
@@ -28,6 +58,7 @@
             </ul>
           </nav>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
