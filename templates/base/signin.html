@@ -1,0 +1,66 @@
+{% extends 'base/index.html' %}
+{% load static %}
+
+{% block main %}
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div
+      class="content-wrapper d-flex align-items-stretch auth auth-img-bg bg-white"
+    >
+      <div class="row flex-grow">
+        <div
+          class="col-lg-5 login-half-bg d-flex flex-row"
+          style="background: url(base/img/Rectangle-67-2.png)"
+        >
+          <div class="brand-logo img_logo">
+            <a href="{% url 'home' %}">Logo </a>
+            <h3>
+              Design Inspire help<br />
+              the creation process
+            </h3>
+          </div>
+        </div>
+        <div
+          class="col-lg-7 d-flex align-items-center justify-content-center mobile-align-item"
+        >
+          <div class="auth-form-transparent">
+            <div class="brand-header normal-none text-right">
+              <h4>
+                Not a member?
+                <span><a href="register.php">Sign up now</a></span>
+              </h4>
+            </div>
+            <h2 class="text-center">Sign in Your Account</h2>
+
+            <form class="pt-3">
+              <div class="form-group">
+                <label for="exampleInputEmail">Email Address</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword">Password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" />
+                </div>
+              </div>
+              <div class="text-right">
+                <a href="forgot-password.php" class="auth-link"
+                  >Forgot password?</a
+                >
+              </div>
+
+              <div class="my-3 login_or">
+                <a class="btn btn-block btn-primary auth-form-btn" href=""
+                  >Sign Up</a
+                >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main %}
