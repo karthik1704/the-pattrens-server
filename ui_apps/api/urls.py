@@ -2,7 +2,7 @@ from django.urls import include, path
 
 from rest_framework import routers
 
-from ui_apps.views import UiAppsViewSet,UiAppsListView
+from ui_apps.api.views import UiAppsViewSet,UiAppsListView
 
 router = routers.DefaultRouter()
 router.register('apps', UiAppsViewSet)

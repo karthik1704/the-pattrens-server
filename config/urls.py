@@ -18,13 +18,12 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from ui_apps.views import index
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='home'),
+    path('', include('ui_apps.urls')),
     path('settings/', include('accounts.urls')),
     path('requests/', include('user_requests.urls')),
     path('myboards/', include('myboards.urls')),

@@ -1,14 +1,11 @@
-from django.urls import include, path
+from django.urls import  path
 
-from rest_framework import routers
+from ui_apps.views import index, project_detail, project_slider
 
-from ui_apps.views import UiAppsViewSet,UiAppsListView
-
-router = routers.DefaultRouter()
-router.register('apps', UiAppsViewSet)
 
 urlpatterns = [
-    #path('', include(router.urls)),
-    path('apps/list/', UiAppsListView.as_view()),
+    path('', index, name='home'),
+    path('detail/', project_detail, name='detail'),
+    path('slider/', project_slider, name='project-slider'),
 
 ]

@@ -1,0 +1,182 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'base/css/uikit.min.css' %}">
+{% endblock extracss %}
+{% block header %}
+{% include 'base/header.html' %}
+{% endblock header %}
+
+{% block main %}
+<div class="uk-child-width-1-2@m uk-grid-large uk-grid-match" uk-grid>
+    <div>
+      <div class="close-img">
+        <a class="uk-close" href="{% url 'detail'%}"><i class="fas fa-times"></i></a>
+      </div>
+      <div class="uk-card uk-card-body text-center"> 
+        <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="min-height: 100%; max-height: 100%">
+          <ul class="uk-slideshow-items" uk-lightbox>
+            <li>
+              <a href="{% static 'base/img/Rectangle-152.png'%}" data-caption="0" uk-cover>
+                <img src="{% static 'base/img/Rectangle-152.png'%}">
+              </a>
+            </li>
+            <li>
+              <a href="{% static 'base/img/Rectangle-153.png'%}" data-caption="1" uk-cover>
+                <img src="{% static 'base/img/Rectangle-153.png'%}">
+              </a>
+            </li>
+            <li>
+              <a href="{% static 'base/img/Rectangle-154.png'%}" data-caption="2" uk-cover>
+                <img src="{% static 'base/img/Rectangle-154.png'%}">
+              </a>
+            </li>
+          </ul>
+          
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover slider-icon" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small uk-hidden-hover slider-icon" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+  
+          <div class="uk-position-bottom-center uk-position-small">
+            <ul class="uk-thumbnav">
+              <li uk-slideshow-item="0">
+                <a href="#">
+                  <img src="{% static 'base/img/Rectangle-152.png'%}" width="60">
+                </a>
+              </li>
+              <li uk-slideshow-item="1">
+                <a href="#">
+                  <img src="{% static 'base/img/Rectangle-153.png'%}" width="60">
+                </a>
+              </li>
+              <li uk-slideshow-item="2">
+                <a href="#">
+                  <img src="{% static 'base/img/Rectangle-154.png'%}" width="60">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div>
+  
+  
+  <div class="uk-card uk-card-body box-design">
+    <div class="product-img1">
+      <img src="{% static 'base/img/product-2.jpg'%}">
+    </div>
+    <div class="product-content1">
+      <h2>Swiggy</h2>
+      <h5>&copy; Swiggy <span><a href="">visit website</a></span></h5>
+      <div class="product-inline">
+        <div class="product-category m-t-10">
+          <p>Category | Food</p>
+        </div>
+        <ul class="drop-select">
+          <div class="p-dropdown m-r-15">
+            <div class="product-inline">
+              <div class="save-dropdown1">
+                <img src="{% static 'base/img/save.png'%}"><span>Save</span>
+              </div> 
+            </div>
+            <ul class="p-dropdown-content profile-down m-t-10">
+              <div class="save-board">
+                <h4>Save my board</h4>
+                <ul>
+                  <li>
+                    <div class="form-check">
+                      <label>
+                        <input type="checkbox"><span class="m-l-10">On Boadring</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="form-check p-b-10 m-t-0">
+                      <label>
+                        <input type="checkbox"><span class="m-l-10">Login</span>
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+                <h4 class="p-t-10" data-target="#modal" data-toggle="modal">+ Create new board</h4>
+              </div>
+            </ul>
+          </div>
+        </ul>  
+      </div>
+    </div>
+              
+                
+    <div class="m-t-200 img-radius">
+      <img src="{% static 'base/img/banner-bg.jpg'%}">
+    </div>
+    <div class="m-t-30">
+      <p>All Product images are showed here designed and credits goes to respective Company's and designers.</p>
+    </div>
+    <div class="m-t-20 screen-logo text-center">
+      <a href="">Screenshot Logo</a>
+    </div>
+</div>
+</div>
+</div>
+
+<!--PopUp Model-->
+<div
+class="modal fade"
+id="modal"
+tabindex="-1"
+role="modal"
+aria-labelledby="modal-label"
+aria-hidden="true"
+style="display: none"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-label">Create a Board</h2>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-hidden="true"
+      >
+        ×
+      </button>
+    </div>
+    <div class="modal-body p-b-0">
+      <div class="row">
+        <div class="col-md-12">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputName">Name</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer justify-center">
+      <!-- <button type="button" class="btn btn-b" data-dismiss="modal">Close</button>-->
+      <button type="button" class="btn btn-b radius-0 create-board">
+        Create
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!--End PopUp Model-->
+
+{% endblock main %}
+
+{% block script %}
+<script src="{% static 'base/js/uikit.min.js' %}"></script>
+
+
+{% endblock script %}
+
+{% block footer %}
+{% include 'base/footer.html' %}
+{% endblock footer %}

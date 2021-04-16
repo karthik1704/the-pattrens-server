@@ -1,21 +1,12 @@
-from rest_framework import viewsets, generics
-
-from .models import UiApps
-from .serializers import UiAppsSerializer, UiAppsListSerializer
-
 from django.shortcuts import  render
 
 # Create your views here.
-
 def index(request):
     return render(request, 'ui_apps/apps.html', {'range': range(10)})
 
-class UiAppsListView(generics.ListAPIView):
+def project_detail(request):
+    return render(request, 'ui_apps/project_detail.html', {})
 
-    queryset = UiApps.objects.all()
-    serializer_class = UiAppsListSerializer
 
-class UiAppsViewSet(viewsets.ModelViewSet):
-    queryset = UiApps.objects.all()
-    serializer_class = UiAppsSerializer
-    
+def project_slider(request):
+    return render(request, 'ui_apps/project_slider.html', {})  
