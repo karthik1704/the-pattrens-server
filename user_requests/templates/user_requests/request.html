@@ -3,6 +3,7 @@
     {% include 'base/header.html' %}
 {% endblock header %}
 {% load static %}
+{% load widget_tweaks %}
 {% block main %}
 <section class="bg-f4f9ff">
   <div class="container-fluid p-0">
@@ -16,63 +17,46 @@
           <img src="{% static 'base/img/rqst-img.png' %}" />
         </div>
         <div class="col-sm-6 bg-white p-100">
-          <div class="form-request">
-            <div class="form-group">
-              <label for="">1. App Name <span>*</span></label>
-              <input class="form-control" id="" type="text" />
+          <form  method="post" action="" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+              {% if not field.name == 'promotion' %}
+                <div class="form-request">
+                  <div class="form-group">
+                    <label for="id_{{field.name}}"> {{forloop.counter}}. {{ field.label }} {% if field.field.required %}<span>*</span>{% endif%}
+                    </label>
+                    <!-- <input class="form-control" id="" type="text" /> -->
+                    {% if not field.name == 'description' %} 
+                      {{ field|attr:"class:form-control" }}
+                    {% else %}
+                      {{ field|attr:"class:form-control"|attr:"rows:4" }}
+                    {% endif %}
+                  </div>
+                  {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                      <strong>{{ error|escape }}</strong>
+                    </div>
+                  {% endfor %}
+                  </div>
+              {% else %}
+                <div class="form-group form-inline text-left">
+                  <div class="form-check">
+                    <label>
+                      {{ field }}<span class="m-l-10"
+                        >Can we send out newsletter and promotion detail to this email
+                        id
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+            
+            <div class="my-3 login_or">
+              <input class="btn btn-block btn-primary auth-form-btn" type="submit" value="Submit"/>
+              
             </div>
-          </div>
-          <div class="form-request">
-            <div class="form-group">
-              <label for="">2. Platform <span>*</span></label>
-              <input class="form-control" id="" type="text" />
-            </div>
-          </div>
-          <div class="form-request">
-            <div class="form-group">
-              <label for="">3.App URL / Website URL <span>*</span></label>
-              <input class="form-control" id="" type="text" />
-            </div>
-          </div>
-          <div class="form-request">
-            <div class="form-group">
-              <label for="">4.Why do you love this app? </label>
-              <textarea class="form-control" rows="4"></textarea>
-            </div>
-          </div>
-          <div class="form-request">
-            <div class="form-group">
-              <label for="">5.Your Name </label>
-              <input class="form-control" id="" type="text" />
-            </div>
-          </div>
-          <div class="form-request">
-            <div class="form-group">
-              <label for="">6.Country </label>
-              <input class="form-control" id="" type="text" />
-            </div>
-          </div>
-          <div class="form-request">
-            <div class="form-group">
-              <label for=""> 7.Email <span>*</span> </label>
-              <input class="form-control" id="" type="email" />
-            </div>
-          </div>
-          <div class="form-group form-inline text-left">
-            <div class="form-check">
-              <label>
-                <input type="checkbox" /><span class="m-l-10"
-                  >Can we send out newsletter and promotion detail to this email
-                  id
-                </span>
-              </label>
-            </div>
-          </div>
-          <div class="my-3 login_or">
-            <a class="btn btn-block btn-primary auth-form-btn" href=""
-              >Submit
-            </a>
-          </div>
+        </form>
         </div>
       </div>
     </div>
