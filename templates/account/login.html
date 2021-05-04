@@ -1,0 +1,84 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block main %}
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div
+      class="content-wrapper d-flex align-items-stretch auth auth-img-bg bg-white"
+    >
+      <div class="row flex-grow">
+        <div
+          class="col-lg-5 login-half-bg d-flex flex-row login-half-image"
+          style="background: url({% static 'base/img/Rectangle-67-2.png' %})"
+        >
+          <div class="brand-logo img_logo">
+            <a href="{% url 'home' %}">Logo </a>
+            <h3>
+              Design Inspire help<br />
+              the creation process
+            </h3>
+          </div>
+        </div>
+        <div
+          class="col-lg-7 d-flex align-items-center justify-content-center mobile-align-item"
+        >
+          <div class="auth-form-transparent">
+            <div class="brand-header normal-none text-right">
+              <h4>
+                Not a member?
+                <span><a href="{{ signup_url }}">Sign up now</a></span>
+              </h4>
+            </div>
+            <h2 class="text-center">Login Your Account</h2>
+              
+            <form class="pt-3 needs-validation" method="POST" action="{% url 'account_login' %}" novalidate>
+              {% if form.errors %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert  alert-danger" role="alert">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+              {% endif %}
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if not field.name == 'remember' %}
+                        <div class="form-group">
+                            <label for="id_{{field.name}}">{{ field.label }}</label>
+                            <div class="input-group" >
+                            <!-- <input type="email" class="form-control" id="" /> -->
+                            {{ field|attr:"class:form-control"}}
+                            {% for error in field.errors %}
+                              <div class="invalid-feedback">
+                                <strong>{{ error|escape }}</strong>
+                              </div>
+                            {% endfor %}
+                            </div>
+                            
+                           
+                        </div>
+                    {% endif %}
+                    
+                {% endfor %}
+            
+              {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <div class="text-right">
+                <a href="{% url 'account_reset_password' %}" class="auth-link"
+                  >Forgot password?</a
+                >
+              </div>
+              
+
+              <div class="my-3 login_or">
+                <input class="btn btn-block btn-primary auth-form-btn" type="submit" value="Login"/>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main %}

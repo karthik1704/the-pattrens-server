@@ -1,4 +1,5 @@
 {% load static %}
+{% load account %}
 <header id="header">
   <div class="header-inner">
     <div class="container">
@@ -12,7 +13,7 @@
       <div id="mainMenu-trigger">
         <a class="lines-button x"><span class="lines"></span></a>
       </div>
-      {% if not request.user.is_authenticated %}
+      {% if request.user.is_authenticated %}
 
       <div id="mainMenu">
         <div class="container">
@@ -28,11 +29,15 @@
               </li>
               <li>
                 <div class="p-dropdown m-l-15">
+                  {% if request.user.profile.avatar %}
+                  <a href="#"><img src="{{ user.profile.avatar.url }}" class="rounded-circle" style="height: 40px;"  /></a>
+                  {% else %}
                   <a href="#"><img src="{% static 'base/img/profile.png'%}" /></a>
-                  <ul class="p-dropdown-content profile-down">
-                    <li><a href="my-board.php">My Boards</a></li>
+                  {% endif %}
+                    <ul class="p-dropdown-content profile-down">
+                    <li><a href="{% url 'myboards' %}">My Boards</a></li>
                     <li><a href="{% url 'settings' %}">Settings</a></li>
-                    <li><a href="#" class="logout-design">Logout</a></li>
+                    <li><a href="/accounts/logout/" class="logout-design">Logout</a></li>
                   </ul>
                 </div>
               </li>
@@ -46,12 +51,12 @@
         <div class="container">
           <nav>
             <ul>
-              <li><a href="login.php">Sign In</a></li>
+              <li><a href="{% url 'account_login' %}">Sign In</a></li>
               <li>
                 <a
                   type="button"
                   class="btn btn-rounded register-now"
-                  href="register.php"
+                  href="{% url 'account_signup' %}"
                   >Register Now</a
                 >
               </li>

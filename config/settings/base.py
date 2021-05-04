@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
+    'crispy_forms',
+    'widget_tweaks',
 
   
 
@@ -102,7 +104,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -134,8 +136,11 @@ AUTHENTICATION_BACKENDS = [
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+LOGIN_REDIRECT_URL = '/'
 
 # Custom Serializer For REST AUTH
 

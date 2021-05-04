@@ -20029,9 +20029,10 @@ a.back-icon {
     margin-top: 30px;
 }
 .auth .login-half-bg {
-       background-size: cover !important;
+    background-size: cover !important;
     background-repeat: no-repeat !important;
 }
+
 .auth-img-bg{
 	width: 100%;
 }

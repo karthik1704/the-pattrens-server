@@ -15,6 +15,7 @@ class MyBoard(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    
 
 class MyBoardItem(models.Model):
     image = models.ForeignKey(UiImages, on_delete=models.DO_NOTHING, blank=True, null=True)

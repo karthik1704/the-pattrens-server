@@ -1,0 +1,103 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block main %}
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div
+      class="content-wrapper d-flex align-items-stretch auth auth-img-bg bg-white"
+    >
+      <div class="row flex-grow">
+        <div
+          class="col-lg-5 login-half-bg d-flex flex-row"
+          style="background: url({% static 'base/img/Rectangle-67.png'%})"
+        >
+          <div class="brand-logo img_logo">
+            <a href="{% url 'home' %}">Logo </a>
+            <h3>
+              Design Inspire help<br />
+              the creation process
+            </h3>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="brand-header normal-none account-back">
+            <div class="text-left dis-header">
+              <a href="{{ login_url }}" class="back-icon"
+                ><i class="icon-chevron-left"></i
+              ></a>
+            </div>
+            <div class="float-right dis-header">
+              <h4>
+                Already a member?
+                <span><a href="{{ login_url }}">Login now</a></span>
+              </h4>
+            </div>
+          </div>
+          <div class="auth-form-transparent">
+            <h2 class="text-center">Create Your Account</h2>
+
+            <form class="pt-3 needs-validation" id="signup_form" method="post" action="{% url 'account_signup' %}" novalidate>
+                {% if form.errors %}
+                  {% for field in form %}
+                    
+                    {% for error in field.non_field_errors %}
+                      <div class="alert  alert-danger" role="alert">
+                          <strong>{{ error|escape }}</strong>
+                      </div>
+                    {% endfor %}
+                  {% endfor %}
+                {% endif %}
+                {% csrf_token %}
+                {% for field in form %}
+                {% if not field.name == 'remember' %}
+                    <div class="form-group">
+                        <label for="id_{{field.name}}">{{ field.label }}</label>
+                        <div class="input-group">
+                        <!-- <input type="email" class="form-control" id="" /> -->
+                        {{ field|attr:"class:form-control" }}
+                        {% for error in field.errors %}
+                        <div class="invalid-feedback">
+                          <strong>{{ error|escape }}</strong>
+                        </div>
+                      {% endfor %}
+                        </div>
+                        
+                    </div>
+                {% endif %}
+                
+            {% endfor %}
+
+              {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <div class="form-group form-inline text-left">
+                <div class="form-check">
+                  <label>
+                    <input type="checkbox" class="margin-minus" required/><small
+                      class="m-l-10"
+                      >Creating an account means you’re okay with our
+                      <a href="">Terms of Service</a> and
+                      <a href="">Our Guidelines</a>
+                    </small>
+                  </label>
+                  <div class="invalid-feedback">
+                    <strong>This field is required</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="my-3 login_or">
+                <input class="btn btn-block btn-primary auth-form-btn" 
+                    type='submit' 
+                    value="Create Account"
+                />
+                
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main %}

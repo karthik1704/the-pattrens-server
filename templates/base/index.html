@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" href="{% static 'base/images/favicon.png' %}">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Screenshot</title>
+<title>{% block head_title %}{% endblock head_title %} | Screenshot </title>
 
 <link href="{% static 'base/css/plugins.css' %}" rel="stylesheet">
 <link href="{% static 'base/css/style.css' %}" rel="stylesheet">
@@ -83,35 +83,34 @@ accordion('.filter-item', '.filter-item-inner-heading', '.filter-attribute-list'
 		$(".filter-sidebar").hide();
 	
 		$(".filter-home").click(function(){
-$(".filter-sidebar").toggle();
-close-icon
-			
-
+			$(".filter-sidebar").toggle();
+			// close-icon
 		});
+
+	
+
 	</script>
 	<script type="text/javascript">
 	
 	
 		$(".close-icon").click(function(){
-$(".filter-sidebar").hide();
-
-			
-
+			$(".filter-sidebar").hide();	
 		});
 	</script>
 	<script type="text/javascript">
 		$(".tag-menu").hide();
-	$(".tag-content").click(function(){
+		$(".tag-content").click(function(){
 
-$(".tag-menu").toggle();
+		$(".tag-menu").toggle();
 		});
 	</script>
 		<script type="text/javascript">
 		$(".tag-menu").hide();
-	$(".tag-design a").click(function(){
+		$(".tag-design a").click(function(){
 
-$(".tag-menu").toggle();
+		$(".tag-menu").toggle();
 		});
+		
 	</script>
 	
 </body>

@@ -22,7 +22,11 @@
     <div class="row">
       <div class="col-sm-5">
         <div class="profile-picture-upload">
-          <img src="" alt="Profile picture preview" class="imagePreview" />
+          {% if user.is_authenticated %}
+            <img src="{{ user.profile.avatar.url }}" alt="Profile picture preview" class="imagePreview" />
+          {% else %}
+            <img src="" alt="Profile picture preview" class="imagePreview" />
+          {% endif %}
           <button class="action-button mode-upload">Upload</button>
           <input type="file" class="hidden" name="fileInput" />
         </div>

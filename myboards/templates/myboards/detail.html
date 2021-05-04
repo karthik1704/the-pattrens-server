@@ -1,0 +1,266 @@
+{% extends 'base/index.html' %} 
+{% load static %} 
+
+{% block header %} 
+{% include 'base/header.html'%} 
+{% endblock header %} 
+
+{% block main %}
+<div class="setting-section bg-f5f6f8">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="setting-title title-display">
+          <h2>{{myboard.name}}</h2>
+          <p>Created on {{myboard.created_at | date}}</p>
+        </div>
+        <!--  <div class="add-board">
+<img src="img/edit.png">
+      </div> -->
+
+        <div class="download-img">
+          <ul>
+            <div class="p-dropdown m-r-15">
+              <a href="#" class="m-l-15"><i class="fas fa-download"></i></a>
+              <ul class="p-dropdown-content profile-down m-t-10">
+                <li>
+                  <a href="#"><span>Export the current board</span></a>
+                </li>
+                <li><a href="#">Pdf standard </a></li>
+                <li><a href="#">Png image </a></li>
+                <li><a href="#">Jpeg image </a></li>
+              </ul>
+            </div>
+          </ul>
+          <a href="#" class="m-r-15"><i class="fas fa-share-alt"></i></a>
+          <a data-target="#modal" data-toggle="modal"
+            ><i class="far fa-trash-alt"></i
+          ></a>
+        </div>
+        <form
+          class="widget-subscribe-form search-board"
+          novalidate
+          action=""
+          role="form"
+          method="post"
+        >
+          <div class="input-group">
+            <input
+              type="text"
+              required=""
+              name="widget-subscribe-form-email"
+              class="form-control required search"
+              placeholder="search"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="p-30">
+  <div class="container">
+    <div class="product-screen">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="pro-img">
+            <a href="project-slider.php">
+              <div class="img-product">
+                <img src="{% static 'base/img/Rectangle-153.png'%}" />
+              </div>
+            </a>
+            <div class="save-dropdown">
+              <i class="fas fa-ellipsis-h"></i><span>Edit</span>
+            </div>
+            <div class="save-select">
+              <h4>Edit Pattern</h4>
+
+              <div class="form-check">
+                <p>
+                  <a href="">Export</a>
+                </p>
+                <p data-target="#modal" data-toggle="modal" class="color-red">
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="pro-img">
+            <a href="project-slider.php">
+              <div class="img-product">
+                <img src="{% static 'base/img/Rectangle-154.png'%}" />
+              </div>
+            </a>
+            <div class="save-dropdown">
+              <i class="fas fa-ellipsis-h"></i><span>Edit</span>
+            </div>
+            <div class="save-select">
+              <h4>Edit Pattern</h4>
+
+              <div class="form-check">
+                <p>
+                  <a href="">Export</a>
+                </p>
+                <p data-target="#modal" data-toggle="modal" class="color-red">
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="pro-img">
+            <a href="project-slider.php">
+              <div class="img-product">
+                <img src="{% static 'base/img/Rectangle-155.png'%}" />
+              </div>
+            </a>
+            <div class="save-dropdown">
+              <i class="fas fa-ellipsis-h"></i><span>Edit</span>
+            </div>
+            <div class="save-select">
+              <h4>Edit Pattern</h4>
+
+              <div class="form-check">
+                <p>
+                  <a href="">Export</a>
+                </p>
+                <p data-target="#modal" data-toggle="modal" class="color-red">
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="pro-img">
+            <a href="project-slider.php">
+              <div class="img-product">
+                <img src="{% static 'base/img/Rectangle-156.png'%}" />
+              </div>
+            </a>
+            <div class="save-dropdown">
+              <i class="fas fa-ellipsis-h"></i><span>Edit</span>
+            </div>
+            <div class="save-select">
+              <h4>Edit Pattern</h4>
+
+              <div class="form-check">
+                <p>
+                  <a href="">Export</a>
+                </p>
+                <p data-target="#modal" data-toggle="modal" class="color-red">
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="pro-img">
+            <a href="project-slider.php">
+              <div class="img-product">
+                <img src="{% static 'base/img/Rectangle-157.png'%}" />
+              </div>
+            </a>
+            <div class="save-dropdown">
+              <i class="fas fa-ellipsis-h"></i><span>Edit</span>
+            </div>
+            <div class="save-select">
+              <h4>Edit Pattern</h4>
+
+              <div class="form-check">
+                <p>
+                  <a href="">Export</a>
+                </p>
+                <p data-target="#modal" data-toggle="modal" class="color-red">
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="pro-img">
+            <a href="project-slider.php">
+              <div class="img-product">
+                <img src="{% static 'base/img/Rectangle-158.png'%}" />
+              </div>
+            </a>
+            <div class="save-dropdown">
+              <i class="fas fa-ellipsis-h"></i><span>Edit</span>
+            </div>
+            <div class="save-select">
+              <h4>Edit Pattern</h4>
+
+              <div class="form-check">
+                <p>
+                  <a href="">Export</a>
+                </p>
+                <p data-target="#modal" data-toggle="modal" class="color-red">
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="pro-img">
+            <a href="project-slider.php">
+              <div class="img-product">
+                <img src="{% static 'base/img/Rectangle-159.png'%}" />
+              </div>
+            </a>
+            <div class="save-dropdown">
+              <i class="fas fa-ellipsis-h"></i><span>Edit</span>
+            </div>
+            <div class="save-select">
+              <h4>Edit Pattern</h4>
+
+              <div class="form-check">
+                <p>
+                  <a href="">Export</a>
+                </p>
+                <p data-target="#modal" data-toggle="modal" class="color-red">
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="pro-img">
+            <a href="project-slider.php">
+              <div class="img-product">
+                <img src="{% static 'base/img/Rectangle-160.png' %}" />
+              </div>
+            </a>
+            <div class="save-dropdown">
+              <i class="fas fa-ellipsis-h"></i><span>Edit</span>
+            </div>
+            <div class="save-select">
+              <h4>Edit Pattern</h4>
+
+              <div class="form-check">
+                <p>
+                  <a href="">Export</a>
+                </p>
+                <p data-target="#modal" data-toggle="modal" class="color-red">
+                  Delete
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main %}
+
+{% block footer %} 
+{% include 'base/footer.html' %} 
+{% endblock footer %} 

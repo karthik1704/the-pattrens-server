@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.admin.options import TabularInline
+from django.contrib.admin.options import StackedInline, TabularInline
 
 from .models import (
     Category,
@@ -13,25 +13,51 @@ from .models import (
 )
 # Register your models here.
 
-class UiImagesAdmin(admin.StackedInline):
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+class ElementAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+class TagAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+class PaltformAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+class VersionAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('version_number',)}
+
+class PatternAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+class VersionInline(StackedInline):
+    model = Version
+    extra = 2
+
+class UiImagesAdmin(TabularInline):
     model = UiImages
     extra = 2
 
 class UiAPPSAdmin(admin.ModelAdmin):
     
-    inlines = (UiImagesAdmin,)   
+    inlines = (VersionInline,UiImagesAdmin,)   
     list_display = ('name', 'created_at', 'modified_at')
     fieldsets = (
-        (None, {'fields': ('name', 'url', 'copyright', 'image',)}),
-        ('Category', {'fields': ('category', 'tag')}),
+        (None, {'fields': ('name', 'slug', 'url', 'copyright', 'image',)}),
+        ('Category', {'fields': ( 'platform','category', 'tag')}),
     )
+    prepopulated_fields = {'slug': ('name',)}
     readonly_fields = ['created_at', 'modified_at']
 
+    class Media:
+        js=('ui_apps/app.js',)
+
 admin.site.register(UiApps, UiAPPSAdmin)
-admin.site.register(Category)
-admin.site.register(Element)
-admin.site.register(Platform)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Element, ElementAdmin)
+admin.site.register(Platform, PaltformAdmin)
 admin.site.register(Pattern)
-admin.site.register(Tag)
-admin.site.register(Version)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(Version, VersionAdmin)
 admin.site.register(UiImages)

@@ -24,10 +24,12 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('ui_apps.urls')),
+    path('accounts/', include('allauth.urls')),
     path('settings/', include('accounts.urls')),
     path('requests/', include('user_requests.urls')),
     path('myboards/', include('myboards.urls')),
-    # API
+
+    # API Endpoints
     path('api/v1/', include('ui_apps.api.urls')),
     path('api/v1/', include('myboards.api.urls')),
     path('api/v1/', include('user_requests.api.urls')),
@@ -40,4 +42,5 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     
