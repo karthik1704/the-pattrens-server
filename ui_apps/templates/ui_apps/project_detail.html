@@ -11,27 +11,28 @@
       <div class="row">
         <div class="col-sm-2">
           <div class="product-img">
-            <img src="{% static 'base/img/product-2.jpg' %}" />
+            <img src="{{project.image.url}}" />
           </div>
         </div>
         <div class="col-sm-10">
           <div class="product-content">
-            <h2>Swiggy</h2>
+            <h2>{{project.name}}</h2>
             <h5>
-              &copy; Swiggy <span><a href="">visit website</a></span>
+              &copy; {{project.copyright}} <span><a href="{{project.url}}">visit website</a></span>
             </h5>
             <div class="product-category">
-              <p>Category | Food</p>
+              <p>Category | {{project.category.name}}</p>
             </div>
             <div class="product-display">
               <div class="product-platform">
                 <h4>Platform</h4>
                 <form class="platform-dropdown">
                   <div class="form-group">
-                    <select>
-                      <option>ios</option>
-                      <option>Android</option>
-                    </select>
+                    <select id="platform">
+                      {% for platform in platforms %}
+                        <option value="{{platform.id}}">{{platform.name}}</option>
+                      {% endfor %}
+                    </select> 
                   </div>
                 </form>
               </div>
@@ -40,8 +41,10 @@
                 <form class="platform-dropdown">
                   <div class="form-group">
                     <select>
-                      <option>Patterns</option>
-                      <option>Android</option>
+                      <option value="">Patterns</option>
+                      {% for pattern in patterns %}
+                        <option value="{{pattern.id}}">{{pattern.name}}</option>
+                      {% endfor %}
                     </select>
                   </div>
                 </form>
@@ -52,7 +55,9 @@
                   <div class="form-group">
                     <select>
                       <option>Elements</option>
-                      <option>Android</option>
+                      {% for element in elements %}
+                        <option value="{{element.id}}">{{element.name}}</option>
+                      {% endfor %}
                     </select>
                   </div>
                 </form>
@@ -385,6 +390,8 @@
     $(".save-select").toggle();
   });
 </script>
+
+<script src="{% static 'ui_apps/detail.js' %}"></script>
 
 {% endblock script %}
 

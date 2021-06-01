@@ -1,9 +1,11 @@
 {% extends 'base/index.html' %} 
 {% load static %} 
 {% block head_title %}Home{% endblock head_title %}
+
 {% block header %} 
 {% include 'base/header.html' %} 
 {% endblock header %} 
+
 {% block main %}
 {% include 'base/warpper.html' %} 
 {% include 'base/coffee.html' %}
@@ -13,12 +15,14 @@
     <div class="portfolio_contents">
       <nav class="grid-filter gf-outline" data-layout="#portfolio">
         <ul>
-          <li class="active"><a href="#" data-category="*">All</a></li>
-          <li><a href="#" data-category=".ct-branding">Andriod</a></li>
-          <li><a href="#" data-category=".ct-photography">iOS</a></li>
+          <li class="active"><a href="#" data-category="*" onclick="onHandleMenuClick(0)">All</a></li>
+          {% for platform in platforms %}
+            <li><a href="#" onclick="onHandleMenuClick({{platform.id}})" data-category=".ct-{{platform.name}}">{{platform.name}}</a></li>
+          {% endfor %}
+          <!-- <li><a href="#" data-category=".ct-photography">iOS</a></li>
           <li><a href="#" data-category=".ct-marketing">Web Dashboard</a></li>
           <li><a href="#" data-category=".ct-media">Google font website</a></li>
-          <li><a href="#" data-category=".ct-webdesign">Game Ui</a></li>
+          <li><a href="#" data-category=".ct-webdesign">Game Ui</a></li> -->
         </ul>
       </nav>
     </div>
@@ -36,27 +40,14 @@
                 <ul class="dropdown-menu tag-menu">
                   <li class="mega-menu-content tag-magamenu">
                     <div class="row">
-                      <div class="col-lg-4">
-                        <ul>
-                          <li><a href="">Advertising</a></li>
-                          <li><a href="">Agency</a></li>
-                          <li><a href="">Animals</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-lg-4">
-                        <ul>
-                          <li><a href="">Advertising</a></li>
-                          <li><a href="">Agency</a></li>
-                          <li><a href="">Animals</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-lg-4">
-                        <ul>
-                          <li><a href="">Advertising</a></li>
-                          <li><a href="">Agency</a></li>
-                          <li><a href="">Animals</a></li>
-                        </ul>
-                      </div>
+                      {% for tag in tags  %}
+                        <div class="col-lg-4">
+                          <ul>
+                              <li><a href="">{{tag.name}}</a></li>
+                          </ul>
+                        </div>
+                      {% endfor %}
+                     
                     </div>
                   </li>
                 </ul>
@@ -68,7 +59,7 @@
 
       <form
         class="widget-subscribe-form"
-        novalidate=""
+        novalidate
         action=""
         role="form"
         method="post"
@@ -76,7 +67,7 @@
         <div class="input-group">
           <input
             type="text"
-            required=""
+            required
             name="widget-subscribe-form-email"
             class="form-control required search"
             placeholder="search"
@@ -89,12 +80,13 @@
       id="portfolio"
       class="grid-layout portfolio-4-columns"
       data-margin="20"
+      style="height: 100%;"
     >
-    {% for i in '0123456789'|make_list %}
-      <div
+      <!-- Below Snippet Added in app.js -->
+      <!-- <div
         class="portfolio-item img-zoom ct-photography ct-media ct-branding ct-Media ct-webdesign"
       >
-        <a href="{% url 'detail' %}">
+        <a href="">
           <div class="portfolio-item-wrap">
             <div class="portfolio-image">
               <img src="{% static 'base/img/product-logo.jpg'%}" alt="" />
@@ -117,8 +109,8 @@
             </div>
           </div>
         </a>
-      </div>
-      {% endfor %}
+      </div> -->
+     
       
         
     </div>
@@ -127,7 +119,15 @@
     </div>
   </div>
 </section>
-{% include 'ui_apps/filter_slider.html' %}
+{% with categories as categories %}
+{% with platforms as platforms %}
+{% with patterns as patterns %}
+{% with elaments as elaments%}
+  {% include 'ui_apps/filter_slider.html' %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
 {% include 'base/coffee.html' %}
 {% endblock main %} 
 
@@ -135,3 +135,7 @@
 {% include 'base/footer.html' %} 
 {% endblock footer %}
 
+{% block script %}
+  <script src="{% static 'ui_apps/app.js' %}" type="text/javascript" ></script>
+ 
+{% endblock script %}

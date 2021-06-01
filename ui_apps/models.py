@@ -80,7 +80,7 @@ class Version(models.Model):
     slug = models.SlugField(unique=True)
 
     def __str__(self) -> str:
-        return self.version_number
+        return f'V {self.version_number}'
 
 
 class UiImages(models.Model):

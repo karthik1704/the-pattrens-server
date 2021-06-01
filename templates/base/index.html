@@ -19,6 +19,7 @@
 {% endblock extracss %}
 
 
+
 </head>
 <body>
 
@@ -52,8 +53,6 @@
 <script src= "{% static 'base/js/functions.js' %}"></script>
 <!-- <script src="{% static 'base/js/uikit.min.js' %}"></script> -->
 
-{% block script %}
-{% endblock script %}
 
 <script>
 	$('#current-year').text(new Date().getFullYear());
@@ -112,6 +111,10 @@ accordion('.filter-item', '.filter-item-inner-heading', '.filter-attribute-list'
 		});
 		
 	</script>
+
+	
+{% block script %}
+{% endblock script %}
 	
 </body>
 

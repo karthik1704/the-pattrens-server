@@ -409,7 +409,7 @@ section.dark,
 .grid-layout {
     overflow: hidden;
     margin-bottom: -2px !important
-}
+} 
 
 .grid-layout>* {
     opacity: 0;

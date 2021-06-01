@@ -10,73 +10,23 @@
         <h1 class="filter-item-inner-heading minus">Filter by Platform</h1>
         <ul class="filter-attribute-list ul-reset">
           <div class="filter-attribute-list-inner">
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="colour-attribute-2"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="colour-attribute-2"
-                class="filter-attribute-label ib-m"
-              >
-                Andriod
-              </label>
-            </li>
-
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="colour-attribute-5"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="colour-attribute-5"
-                class="filter-attribute-label ib-m"
-              >
-                IOS
-              </label>
-            </li>
-
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="colour-attribute-15"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="colour-attribute-15"
-                class="filter-attribute-label ib-m"
-              >
-                Google font website
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="colour-attribute-16"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="colour-attribute-16"
-                class="filter-attribute-label ib-m"
-              >
-                Web Dashboard
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="colour-attribute-17"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="colour-attribute-17"
-                class="filter-attribute-label ib-m"
-              >
-                Game Ui
-              </label>
-            </li>
+            {% for platform in platforms %}
+              <li class="filter-attribute-item">
+                <input
+                  type="checkbox"
+                  id="id_{{platform.name}}"
+                  onchange="handlePlatformChange(this)"
+                  value = {{platform.id}}
+                  class="filter-attribute-checkbox ib-m"
+                />
+                <label
+                  for="id_{{platform.name}}"
+                  class="filter-attribute-label ib-m"
+                >
+                  {{platform.name}}
+                </label>
+              </li>
+            {% endfor %}
           </div>
         </ul>
       </section>
@@ -87,76 +37,24 @@
         <h1 class="filter-item-inner-heading minus">Filter by Categories</h1>
         <ul class="filter-attribute-list ul-reset">
           <div class="filter-attribute-list-inner">
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="size-attribute-3"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label for="size-attribute-3" class="filter-attribute-label ib-m">
-                Business
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="size-attribute-4"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label for="size-attribute-4" class="filter-attribute-label ib-m">
-                Education
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="size-attribute-5"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label for="size-attribute-5" class="filter-attribute-label ib-m">
-                Entertainment
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="size-attribute-6"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label for="size-attribute-6" class="filter-attribute-label ib-m">
-                Finance
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="size-attribute-7"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label for="size-attribute-7" class="filter-attribute-label ib-m">
-                Food & Drink
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="size-attribute-8"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label for="size-attribute-8" class="filter-attribute-label ib-m">
-                Health & Fitness
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="size-attribute-9"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label for="size-attribute-9" class="filter-attribute-label ib-m">
-                Lifestyle
-              </label>
-            </li>
+            {% for category in categories %}
+              <li class="filter-attribute-item">
+                <input
+                  type="checkbox"
+                  id="id_{{category.name}}"
+                  onchange="handleCategoryChange(this)"
+                  value = {{category.id}}
+                  class="filter-attribute-checkbox ib-m"
+                />
+                <label
+                  for="id_{{category.name}}"
+                  class="filter-attribute-label ib-m"
+                >
+                  {{category.name}}
+                </label>
+              </li>
+            {% endfor %}
+            
           </div>
         </ul>
       </section>
@@ -167,86 +65,24 @@
         <h1 class="filter-item-inner-heading minus">Filter by Patterns</h1>
         <ul class="filter-attribute-list ul-reset">
           <div class="filter-attribute-list-inner">
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-2"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-2"
-                class="filter-attribute-label ib-m"
-              >
-                Guided Tour
-              </label>
-            </li>
-
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-3"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-3"
-                class="filter-attribute-label ib-m"
-              >
-                Launch Screens
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-4"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-4"
-                class="filter-attribute-label ib-m"
-              >
-                Logins
-              </label>
-            </li>
-
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-9"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-11"
-                class="filter-attribute-label ib-m"
-              >
-                Setups
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-110"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-110"
-                class="filter-attribute-label ib-m"
-              >
-                Signups
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-111"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-111"
-                class="filter-attribute-label ib-m"
-              >
-                Walkthroughs
-              </label>
-            </li>
+            {% for pattern in patterns %}
+              <li class="filter-attribute-item">
+                <input
+                  type="checkbox"
+                  id="id_{{pattern.name}}"
+                  onchange="handlePatternsChange(this)"
+                  value = {{pattern.id}}
+                  class="filter-attribute-checkbox ib-m"
+                />
+                <label
+                  for="id_{{pattern.name}}"
+                  class="filter-attribute-label ib-m"
+                >
+                  {{pattern.name}}
+                </label>
+              </li>
+            {% endfor %}
+           
           </div>
         </ul>
       </section>
@@ -256,73 +92,24 @@
         <h1 class="filter-item-inner-heading minus">Filter by Elements</h1>
         <ul class="filter-attribute-list ul-reset">
           <div class="filter-attribute-list-inner">
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-112"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-112"
-                class="filter-attribute-label ib-m"
-              >
-                Nav Bars
-              </label>
-            </li>
-
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-113"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-113"
-                class="filter-attribute-label ib-m"
-              >
-                Tab Bars
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-114"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-114"
-                class="filter-attribute-label ib-m"
-              >
-                Tabs
-              </label>
-            </li>
-
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-115"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-115"
-                class="filter-attribute-label ib-m"
-              >
-                Toolbars
-              </label>
-            </li>
-            <li class="filter-attribute-item">
-              <input
-                type="checkbox"
-                id="material-attribute-116"
-                class="filter-attribute-checkbox ib-m"
-              />
-              <label
-                for="material-attribute-116"
-                class="filter-attribute-label ib-m"
-              >
-                Search Bars
-              </label>
-            </li>
+            {% for element in elements %}
+              <li class="filter-attribute-item">
+                <input
+                  type="checkbox"
+                  id="id_{{element.name}}"
+                  onchange="handleElementsChange(this)"
+                  value = {{element.id}}
+                  class="filter-attribute-checkbox ib-m"
+                />
+                <label
+                  for="id_{{element.name}}"
+                  class="filter-attribute-label ib-m"
+                >
+                  {{element.name}}
+                </label>
+              </li>
+            {% endfor %}
+            
           </div>
         </ul>
       </section>

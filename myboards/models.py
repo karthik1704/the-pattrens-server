@@ -18,6 +18,7 @@ class MyBoard(models.Model):
     
 
 class MyBoardItem(models.Model):
+    myboard = models.ForeignKey(MyBoard, on_delete=models.CASCADE)
     image = models.ForeignKey(UiImages, on_delete=models.DO_NOTHING, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True) 

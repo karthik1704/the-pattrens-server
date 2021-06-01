@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin.options import StackedInline, TabularInline
+import nested_admin
 
 from .models import (
     Category,
@@ -31,17 +32,18 @@ class VersionAdmin(admin.ModelAdmin):
 class PatternAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
-class VersionInline(StackedInline):
-    model = Version
-    extra = 2
 
 class UiImagesAdmin(TabularInline):
     model = UiImages
     extra = 2
 
+class VersionInline(StackedInline):
+    model = Version
+    extra = 2
+
 class UiAPPSAdmin(admin.ModelAdmin):
     
-    inlines = (VersionInline,UiImagesAdmin,)   
+    inlines = (VersionInline, UiImagesAdmin)   
     list_display = ('name', 'created_at', 'modified_at')
     fieldsets = (
         (None, {'fields': ('name', 'slug', 'url', 'copyright', 'image',)}),
@@ -57,7 +59,7 @@ admin.site.register(UiApps, UiAPPSAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Element, ElementAdmin)
 admin.site.register(Platform, PaltformAdmin)
-admin.site.register(Pattern)
+admin.site.register(Pattern, PatternAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Version, VersionAdmin)
 admin.site.register(UiImages)

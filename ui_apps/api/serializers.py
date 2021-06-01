@@ -41,6 +41,12 @@ class TagSerializer(serializers.ModelSerializer):
         model = Tag
         fields = '__all__'
 
+class VersionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Version
+        fields = '__all__'
+
 class UiImagesSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -51,11 +57,13 @@ class UiAppsListSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
     tag = TagSerializer(many=True)
     uiimage = UiImagesSerializer(many=True)
+    version = VersionSerializer(many=True)
     class Meta:
         model = UiApps
         fields = (
             'id',
             'name',
+            'slug',
             'copyright',
             'url',
             'image',
@@ -63,6 +71,7 @@ class UiAppsListSerializer(serializers.ModelSerializer):
             'tag',
             'created_at',
             'modified_at',
+            'version',
             'uiimage',
 
         )

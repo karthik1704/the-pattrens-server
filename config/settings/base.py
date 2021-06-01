@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # 3-rd Party
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
 
     'corsheaders',
 
@@ -59,6 +60,9 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'crispy_forms',
     'widget_tweaks',
+
+   'nested_admin',
+   'django_cleanup.apps.CleanupConfig',
 
   
 
@@ -104,7 +108,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -163,6 +167,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
 }
 
 
