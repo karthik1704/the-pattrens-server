@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
 
-   'nested_admin',
+
    'django_cleanup.apps.CleanupConfig',
 
   

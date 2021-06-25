@@ -89,6 +89,5 @@ class UiImages(models.Model):
     version = models.ForeignKey(Version, on_delete=models.DO_NOTHING)
     pattern = models.ForeignKey(Pattern, on_delete=models.DO_NOTHING,  blank=True, null=True)
     element = models.ForeignKey(Element, on_delete=models.DO_NOTHING, blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
     image = models.ImageField(upload_to='apps/')
 

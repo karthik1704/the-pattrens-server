@@ -51,6 +51,7 @@ class UiAppsListSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
     tag = TagSerializer(many=True)
     uiimage = UiImagesSerializer(many=True)
+    image64 = serializers.SerializerMethodField()
     class Meta:
         model = UiApps
         fields = (
@@ -59,6 +60,7 @@ class UiAppsListSerializer(serializers.ModelSerializer):
             'copyright',
             'url',
             'image',
+            'image64',
             'category',
             'tag',
             'created_at',
@@ -66,6 +68,16 @@ class UiAppsListSerializer(serializers.ModelSerializer):
             'uiimage',
 
         )
+    
+    def get_image64(self, obj):
+        import base64
+        with open(obj.image,'rb') as image_file:
+            image_data = base64.b32encode(image_file.read()).decode('utf-8')
+            print (image_data)
+        
+        return f'data:image/jpeg;base64, {image_data}'
+
+    
 
 
 class UiAppsSerializer(serializers.ModelSerializer):

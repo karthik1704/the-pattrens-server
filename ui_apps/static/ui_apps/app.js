@@ -51,7 +51,7 @@ function main(id=null){
                     <a href="/detail/${item.slug}">
                         <div class="portfolio-item-wrap">
                             <div class="portfolio-image">
-                                <img src="${item.image}" alt="" />
+                                <img src="${item.image64}" alt="" />
                             </div>
                 
                             <div class="portfolio-contents">

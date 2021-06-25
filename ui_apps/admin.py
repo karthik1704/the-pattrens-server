@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.contrib.admin.options import StackedInline, TabularInline
-import nested_admin
 
 from .models import (
     Category,

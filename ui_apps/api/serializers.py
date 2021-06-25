@@ -1,4 +1,5 @@
 from rest_framework import serializers
+import base64
 
 from ui_apps.models import (
     Category, 
@@ -48,16 +49,25 @@ class VersionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class UiImagesSerializer(serializers.ModelSerializer):
+    image64 = serializers.SerializerMethodField()
 
     class Meta:
         model = UiImages
         fields = '__all__'
+    
+    def get_image64(self, obj):
+        #with open(obj.image,'rb') as image_file:
+        image_data = base64.b64encode(obj.image.read()).decode('utf-8')   
+        file_ext = obj.image.url.split('.')[-1]     
+        return f'data:image/{file_ext};base64, {image_data}'
 
 class UiAppsListSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
     tag = TagSerializer(many=True)
     uiimage = UiImagesSerializer(many=True)
     version = VersionSerializer(many=True)
+    image64 = serializers.SerializerMethodField()
+
     class Meta:
         model = UiApps
         fields = (
@@ -67,6 +77,7 @@ class UiAppsListSerializer(serializers.ModelSerializer):
             'copyright',
             'url',
             'image',
+            'image64',
             'category',
             'tag',
             'created_at',
@@ -76,9 +87,16 @@ class UiAppsListSerializer(serializers.ModelSerializer):
 
         )
 
+    def get_image64(self, obj):
+        #with open(obj.image,'rb') as image_file:
+        print(obj.image.url.split('.')[-1])
+        image_data = base64.b64encode(obj.image.read()).decode('utf-8')        
+        file_ext = obj.image.url.split('.')[-1]     
+        return f'data:image/{file_ext};base64, {image_data}'
 
 class UiAppsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UiApps
         fields = '__all__'
+
