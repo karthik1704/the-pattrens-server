@@ -128,6 +128,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# 3.2 changes 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 # Auth Backends
 
 AUTHENTICATION_BACKENDS = [
