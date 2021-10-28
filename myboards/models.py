@@ -8,12 +8,16 @@ User = settings.AUTH_USER_MODEL
 
 class MyBoard(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
+    board_name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50, editable=False, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True) 
 
+    class Meta:
+        unique_together = [['user', 'board_name']]
+
     def __str__(self) -> str:
-        return self.name
+        return self.board_name
 
     
 

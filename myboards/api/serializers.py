@@ -7,4 +7,4 @@ class MyBoardSerializer(serializers.ModelSerializer):
     class Meta:
         model = MyBoard
         fields = '__all__'
-        read_only_fields = ('user',)
+        read_only_fields = ('user','slug',)
