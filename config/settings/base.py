@@ -64,7 +64,7 @@ INSTALLED_APPS = [
 
    'django_cleanup.apps.CleanupConfig',
 
-  
+    'django_extensions',
 
     # APPS
     'accounts.apps.AccountsConfig',
