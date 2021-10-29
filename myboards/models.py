@@ -15,8 +15,7 @@ class MyBoard(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True) 
 
-    class Meta:
-        unique_together = [['user', 'board_name']]
+    
 
     def __str__(self) -> str:
         return self.board_name
