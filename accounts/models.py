@@ -15,6 +15,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_superuser = BooleanField(default=False)
     is_staff = BooleanField(default=False)
     is_active = BooleanField(default=True) 
+
+    first_name = CharField(max_length=100,blank=True, null=True)
+    last_name = CharField(max_length=100,blank=True, null=True)
     
     created = DateTimeField(auto_now_add=True)
     last_login = DateTimeField(auto_now=True)
@@ -46,6 +49,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Profile(models.Model):
     user = OneToOneField(User,on_delete=models.CASCADE)
     avatar = ImageField(upload_to="avatar/", blank=True, null=True)
-    first_name = CharField(max_length=100,blank=True, null=True)
-    last_name = CharField(max_length=100,blank=True, null=True)
     birth_date = DateField(blank=True, null=True)
