@@ -21,7 +21,7 @@ class MyBoard(models.Model):
         return self.board_name
 
     def slugify_function(self, content):
-        return content.replace('_', '-').lower()
+        return content.replace('_', '-').replace(' ', '-').lower()
 
     
 
