@@ -4,29 +4,44 @@ from accounts.models import User
 
 
 class UserDetailSerializer(serializers.ModelSerializer):
-
+    avatar = serializers.ImageField(source='profile.avatar', read_only=True)
     class Meta:
         model = User
-        fields = ('pk','email')
+        fields = ('pk','email', 'first_name', 'last_name', 'avatar')
         read_only_fields = ('email',)
 
 
 
-# class RegisterSerializer(serializers.Serializer):
-#     email = serializers.EmailField()
-#     password1= serializers.CharField(write_only=True, style={'input_type': 'password'})
-#     password2= serializers.CharField(write_only=True, style={'input_type': 'password'})
+class UserRegisterSerializer(serializers.ModelSerializer):
+    first_name=serializers.CharField()
+    last_name=serializers.CharField()
+    password2 = serializers.CharField(style={'input_type':'password'}, write_only=True)
 
-#     def validate(self, data):
-#         if data['password1'] != data['password2']:
-#             raise serializers.ValidationError(_("The two password fields didn't match."))
-#         return data
+    class Meta:
+        model = User
+        fields = [ 'email', 'first_name','last_name',
+        'password', 'password2',]
+        extra_kwargs = {
+            'password': {
+                'style':{'input_type':'password'},
+                'write_only':True
+            }
+        }    
 
-#     def get_cleaned_data(self):
-#         return {
-#             'email': self.validated_data.get('email', ''),
-#             'password1': self.validated_data.get('password1', ''),
-#         }
+    def save(self, request):
+        
+        user = User(
+            email = self.validated_data['email'] or None,
+            first_name = self.validated_data['first_name'],
+            last_name = self.validated_data['last_name'],
+        )
 
-#     def save(self,request):
-#         pass
+        password1 = self.validated_data['password']
+        password2 = self.validated_data['password2']
+
+        if password1 != password2:
+            raise serializers.ValidationError({'password': 'Password Must Match.'})
+
+        user.set_password(password1)
+        user.save()
+        return user

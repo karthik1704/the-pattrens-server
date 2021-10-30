@@ -7,6 +7,6 @@ from myboards.models import MyBoard
 @receiver(post_save , sender=User)
 def create_default_board(sender, instance, created, **kwargs):
     if created:
-        MyBoard.objects.create(user=instance, name='Default Board')
+        MyBoard.objects.create(user=instance, board_name=f"{instance.first_name}'s Board")
         Profile.objects.create(user=instance)
         
