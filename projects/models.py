@@ -60,7 +60,7 @@ class ProjectVersion(models.Model):
     platform = models.ForeignKey(Platform, on_delete=models.CASCADE)
 
     version = models.CharField(max_length=10)
-    slug = AutoSlugField(populate_from='version', slugify_function=my_slugify_function)
+    slug = AutoSlugField(populate_from=['version','platform_platform_name'], slugify_function=my_slugify_function)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True) 
@@ -70,7 +70,7 @@ class ProjectVersion(models.Model):
             models.UniqueConstraint(fields=['project', 'platform', 'version'], name='unique_projectversion')
         ]
     def __str__(self) -> str:
-        return self.project.project_name
+        return f'{self.project.project_name}-{self.version}'
 
 class Pattern(models.Model):
     """Model definition for Pattern."""
@@ -119,9 +119,10 @@ class ProjectImage(models.Model):
 
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     platform = models.ForeignKey(Platform, on_delete=models.CASCADE)
+    version = models.ForeignKey(ProjectVersion, on_delete=models.CASCADE, null=True)
 
-    element = models.ForeignKey(Element, on_delete=models.CASCADE)
-    pattern = models.ForeignKey(Pattern, on_delete=models.CASCADE)
+    element = models.ForeignKey(Element, on_delete=models.CASCADE, null=True, blank=True)
+    pattern = models.ForeignKey(Pattern, on_delete=models.CASCADE,null=True, blank=True)
 
     image = models.ImageField(upload_to="projects/")
 
