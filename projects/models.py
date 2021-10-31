@@ -6,13 +6,13 @@ from django.conf import settings
 
 USER = settings.AUTH_USER_MODEL 
 
-def my_slugify_function(self, content):
+def my_slugify_function(content):
         return content.replace('_', '-').replace(' ', '-').lower()
 
 # Create your models here.
 class Category(models.Model):
     category_name = models.CharField(max_length=20)
-    slug = AutoSlugField(populate_from=['catergory_name'] ,slugify_function=my_slugify_function)
+    slug = AutoSlugField(populate_from=['category_name'] ,slugify_function=my_slugify_function)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True) 
@@ -42,7 +42,7 @@ class Project(models.Model):
     platform = models.ManyToManyField(Platform)
 
     project_name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100)
+    slug = AutoSlugField(max_length=100,populate_from='project_name', slugify_function=my_slugify_function)
     copy_right = models.CharField(max_length=100)
     url = models.URLField()
     image = models.ImageField(upload_to='projects/')    

@@ -4,9 +4,9 @@ from projects.models import Platform, Project, Category, Element, Pattern,Projec
 # Register your models here.
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('pk','project_name', 'created_at', 'modified_at')
+    list_display = ('pk','project_name', 'url','copy_right','category','created_at', 'modified_at')
     fieldsets = (
-        (None, {'fields': ('project_name', 'slug', 'url', 'copy_right', 'image',)}),
+        (None, {'fields': ('project_name',  'url', 'copy_right', 'image',)}),
         ('Category', {'fields': ( 'platform','category', )}),
     )
     readonly_fields = ['created_at', 'modified_at']
