@@ -23,6 +23,11 @@ class MyBoard(models.Model):
     def slugify_function(self, content):
         return content.replace('_', '-').replace(' ', '-').lower()
 
+    def board_items(self):
+        if not hasattr(self, '_myboarditem'):
+            self._myboarditem = self.myboarditem_set.all()
+        return self._myboarditem
+
     
 
 class MyBoardItem(models.Model):
