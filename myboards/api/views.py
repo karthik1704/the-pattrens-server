@@ -15,6 +15,7 @@ class MyBoardViewSet(viewsets.ModelViewSet):
     queryset = MyBoard.objects.none()
     serializer_class = MyBoardSerializer
     permission_classes = [IsAuthenticated, IsOwner]
+    lookup_field = 'slug'
     def get_queryset(self):
         queryset = MyBoard.objects.filter(user = self.request.user)
         return queryset
